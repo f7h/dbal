@@ -82,7 +82,7 @@ class DbalProducer implements PsrProducer
 
         $publishedAt = null !== $message->getPublishedAt() ?
             $message->getPublishedAt() :
-            (int) (microtime(true) * 10000)
+            (int) ((microtime(true) - 1546300800) * 100) // from 2019-01-01, 1/100 sec precision, overflow ~2019-08-20
         ;
 
         $dbalMessage = [
